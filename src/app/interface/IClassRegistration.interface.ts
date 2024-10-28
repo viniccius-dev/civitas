@@ -10,6 +10,6 @@ export interface SelectOption {
     apelidoTurma: string;
   }
   
-  export interface AnoLetivoOption extends SelectOption {}
-  export interface PeriodoLetivoOption extends SelectOption {}
-  export interface EnsinoOption extends SelectOption {}
+  export type AnoLetivoOption = SelectOption
+  export type PeriodoLetivoOption = SelectOption
+  export type EnsinoOption = SelectOption
