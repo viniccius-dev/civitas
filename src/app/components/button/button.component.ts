@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-button',
@@ -7,8 +9,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() label!: string; // Propriedade para definir o texto do botão
-  @Input() customClass = ''; // Classe personalizada
-  @Input() disabled = false;
+  @Input() customClass: string = ''; // Classe personalizada
+  @Input() disabled: boolean = false;
   @Output() clickEvent = new EventEmitter<void>(); // Evento de clique
 
   onClick() {
