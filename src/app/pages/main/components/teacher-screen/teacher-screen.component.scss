@@ -10,7 +10,6 @@ main {
     grid-template-rows: 350px auto;
     margin-right: 10%;
 
-
     .content-wrapper {
         grid-area: description-section;
         width: 100%;
@@ -35,8 +34,6 @@ main {
             gap: 40px;
 
             .text-wrapper {
-                width: 48%;
-
                 h2 {
                     font-size: 2rem;
                     margin-bottom: 0.8rem;
@@ -77,57 +74,47 @@ main {
         }
     }
 
-
-    /* ==== MOBILE ===== */
     @media (max-width: 810px) {
-        .main-section {
+        width: 100%;
+        grid-template-areas:
+            "sidebar"
+            "description-section"
+            "cards-section";
+        grid-template-columns: auto;
+        grid-template-rows: 100px auto;
+
+        .content-wrapper .title-wrapper h1 {
+            margin-inline: 12px;
+            font-size: 1.8rem;
+            width: 50%;
+        }
+
+        .content-wrapper {
+            padding-left: 15px;
+        }
+
+        .content .text-wrapper {
+            margin-inline: 12px;
+        }
+
+        .content-wrapper .content {
             flex-direction: column;
             flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
 
-            .content-wrapper .title-wrapper h1 {
-                font-size: 1.8rem;
-                width: 50%;
+            .text-wrapper h2 {
+                font-size: 1.5rem;
             }
 
-            .content-wrapper .content {
-                flex-direction: column;
+            .video-wrapper {
+                padding: 10px 10px 20px 0;
+                margin-bottom: 2rem;
 
-                .text-wrapper h2 {
-                    font-size: 1.5rem;
+                iframe {
+                    overflow: hidden;
+                    max-width: 100%;
+                    max-height: 100%;
                 }
-
-                .text-wrapper .btn-content {
-                    width: 100%;
-                }
-
-                .video-wrapper {
-                    position: relative;
-                    width: 100%;
-                    padding-bottom: 56.25%;
-
-                    iframe {
-                        position: absolute;
-                        top: 0;
-                        right: 13.5%;
-                        width: 100%;
-                        height: 100%;
-                        padding: 10px 20px 20px;
-                    }
-
-                }
-            }
-        }
-    }
-
-    @media (max-width: 510px) {
-        .main-section {
-            margin: 5rem 0 0 10rem;
-
-            .content-wrapper .content .video-wrapper iframe {
-                right: 21%;
-                padding: 10px 10px 20px;
             }
         }
     }
