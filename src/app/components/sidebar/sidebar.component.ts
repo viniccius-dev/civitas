@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ILogo } from 'src/app/interface';
 import { ISidebarIcons } from 'src/app/interface/ISidebarIcons.interface';
+import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,7 +21,7 @@ export class SidebarComponent {
 
   @Input() menuIcons: ISidebarIcons[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   //Roteamento dos icons do sidebar
     navigateTo(route: string):void {
@@ -29,6 +30,6 @@ export class SidebarComponent {
 
   //Roteamento do botão sair do sidebar
     logout():void {
-      this.router.navigate(['/admin-login'])
+      this.authService.logout();
     }
 }

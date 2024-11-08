@@ -12,7 +12,7 @@ import { StudentListComponent } from "./components/student-list/student-list.com
 const routes: Routes = [
   { path: 'class-list', component: ClassListComponent },
   { path: 'teacher-list', component: TeacherListComponent },
-  { path: 'admin-screen', component: AdminScreenComponent },
+  { path: '', component: AdminScreenComponent },
   { path: 'class-registration', component: ClassRegistrationComponent },
   { path: 'teacher-registration', component: TeacherRegistrationComponent },
   { path: 'student-registration', component: StudentRegistrationComponent },
