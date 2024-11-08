@@ -1,80 +1,82 @@
 @import '../../../../styles/variables.scss';
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "sidebar description-section"
+        "sidebar cards-section";
+    grid-template-columns: 172px auto;
+    grid-template-rows: 350px auto;
+    margin-right: 10%;
 
-    .main-section {
-        margin: 5rem 0 0 14rem;
-        display: flex;
-        justify-content: center;
+
+    .content-wrapper {
+        grid-area: description-section;
         width: 100%;
-        max-width: 70rem;
+        flex-direction: column;
+        padding-left: 4rem;
+        margin-top: 4rem;
 
-        .content-wrapper {
+        .title-wrapper {
+            h1 {
+                font-size: 3.2rem;
+                font-weight: 500;
+                margin-bottom: 3rem;
+                color: $fourth-color;
+            }
+        }
+
+        .content {
+            display: flex;
+            font-size: 1rem;
+            font-weight: 400;
             width: 100%;
-            flex-direction: column;
+            gap: 40px;
 
-            .title-wrapper {
-                h1 {
-                    font-size: 3.2rem;
-                    font-weight: 500;
-                    margin-bottom: 3rem;
-                    color: $fourth-color;
+            .text-wrapper {
+                width: 48%;
+
+                h2 {
+                    font-size: 2rem;
+                    margin-bottom: 0.8rem;
+                    font-weight: 400;
+                }
+
+                .btn-content {
+                    background: $primary-color;
+                    border: none;
+                    border-radius: 25px;
+                    margin-top: 0.8rem;
+                    font-weight: 400;
+                    font-size: 0.7rem;
+                    padding: 0.2rem;
+                    height: 30px;
+                    width: 190px;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                }
+
+                .btn-content:hover {
+                    background: $button-register-color;
+                    color: #fff;
                 }
             }
 
-            .content {
+            .video-wrapper {
                 display: flex;
-                font-size: 1rem;
-                font-weight: 400;
-                width: 100%;
-                gap: 40px;
 
-                .text-wrapper {
-                    width: 48%;
-
-                    h2 {
-                        font-size: 2rem;
-                        margin-bottom: 0.8rem;
-                        font-weight: 400;
-                    }
-
-                    .btn-content {
-                        background: $primary-color;
-                        border: none;
-                        border-radius: 25px;
-                        margin-top: 0.8rem;
-                        font-weight: 400;
-                        font-size: 0.7rem;
-                        padding: 0.5rem 1rem;
-                        width: 32%;
-                        transition: all 0.3s ease;
-                        cursor: pointer;
-                    }
-
-                    .btn-content:hover {
-                        background: $button-register-color;
-                        color: #fff;
-                    }
-                }
-
-                .video-wrapper {
-                    display: flex;
-
-                    iframe {
-                        width: 100%;
-                        width: 460px;
-                        height: 320px;
-                        display: block;
-                        margin: 0 auto;
-                    }
+                iframe {
+                    width: 100%;
+                    width: 460px;
+                    height: 320px;
+                    display: block;
+                    margin: 0 auto;
                 }
             }
         }
     }
+
 
     /* ==== MOBILE ===== */
     @media (max-width: 810px) {
