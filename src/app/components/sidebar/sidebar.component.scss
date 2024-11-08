@@ -31,6 +31,11 @@
             left: 50%;
             transform: translateX(-50%);
 
+            .logo-link {
+                display: block;
+                text-decoration: none;
+            }
+
             img {
                 width: 87px;
                 height: 87px;

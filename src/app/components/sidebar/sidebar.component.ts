@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ILogo } from 'src/app/interface';
+import { ILogo, ILogoLink } from 'src/app/interface';
 import { ISidebarIcons } from 'src/app/interface/ISidebarIcons.interface';
 
 @Component({
@@ -9,6 +9,7 @@ import { ISidebarIcons } from 'src/app/interface/ISidebarIcons.interface';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  @Input() homeLink!: { route: string };
 
   logoDesktop: ILogo[] = [
     { name: "Logo Civitas", image: 'assets/civitas-logos/logo_civitas_sem_fundo.webp' }
@@ -19,6 +20,7 @@ export class SidebarComponent {
   ]
 
   @Input() menuIcons: ISidebarIcons[] = [];
+ 
 
   constructor(private router: Router) { }
 
