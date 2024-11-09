@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/service/auth/auth.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+  @Input() homeLink!: { route: string };
 
   logoDesktop: ILogo[] = [
     { name: "Logo Civitas", image: 'assets/civitas-logos/logo_civitas_sem_fundo.webp' }
@@ -24,12 +25,11 @@ export class SidebarComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   //Roteamento dos icons do sidebar
-    navigateTo(route: string):void {
-      this.router.navigate([route]);
-    }
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
+  }
 
-  //Roteamento do botão sair do sidebar
-    logout():void {
-      this.authService.logout();
-    }
+  logout():void {
+    this.authService.logout();
+  }
 }
