@@ -115,6 +115,7 @@ main {
 .main-section {
   grid-area: content;
   overflow-y: auto;
+  z-index: 1;
 
   @media (max-width: 820px) {
     overflow-y: inherit;
