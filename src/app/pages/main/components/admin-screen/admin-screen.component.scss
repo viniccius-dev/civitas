@@ -37,11 +37,12 @@ main {
             margin-top: 2rem;
             font-weight: 400;
             font-size: 0.7rem;
-            padding: 0.2rem;
-            height: 30px;
-            width: 220px;
+            padding: 6px 10px;
+            width: 250px;
             transition: all 0.3s ease;
             cursor: pointer;
+            display: block;
+            z-index: 1;
         }
 
         .btn-content:hover {
@@ -53,6 +54,7 @@ main {
     .card-wrapper {
         grid-area: cards-section;
         display: grid;
+        margin-top: 2rem;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         padding-left: 4rem;
@@ -135,8 +137,7 @@ main {
             padding-left: 15px;
             margin-top: 15px;
             grid-template-columns: 1fr;
-            margin-inline: 5px;
-            gap: 1px;
+            margin-inline: auto;
 
             .card {
                 margin-bottom: 5px;
