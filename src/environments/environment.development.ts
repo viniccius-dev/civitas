@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://civitas-api-gesx.onrender.com/'
+  apiUrl: 'https://civitas-api-bywb.onrender.com/'
 };

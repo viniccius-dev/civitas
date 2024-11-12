@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ISidebarIcons } from 'src/app/interface';
+import { TeacherService, Teacher, Class } from '../../../../service/teachers/teachers.service';
 @Component({
   selector: 'app-teacher-list',
   templateUrl: './teacher-list.component.html',
@@ -13,4 +14,25 @@ export class TeacherListComponent {
     { name: "Professores", image: 'assets/icons-sidebar/professores.svg', route: 'main/teacher-list' },
     { name: "Estudantes", image: 'assets/icons-sidebar/estudantes.svg', route:'main/student-list' }
   ];
+
+  teachers: Teacher[] = [];
+  teacherClassesNames: { [key: string]: string[] } = {};
+  isLoading = true;constructor(private teacherService: TeacherService) {}
+
+  ngOnInit() {
+    this.teacherService.getTeachers().subscribe(
+      (data) => {
+        this.teachers = data;
+
+        data.forEach((teacher) => {
+          this.teacherClassesNames[teacher.registrationNumber] = teacher.classes.map((classItem: Class) => classItem.name);
+        });
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error("Erro ao carregar professores:", error);
+        this.isLoading = false;
+      }
+    );
+  }
 }
