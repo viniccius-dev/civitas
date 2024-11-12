@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { ISidebarIcons } from 'src/app/interface';
 import { TeacherService, Teacher, Class } from '../../../../service/teachers/teachers.service';
 @Component({
@@ -7,7 +7,7 @@ import { TeacherService, Teacher, Class } from '../../../../service/teachers/tea
   styleUrls: ['../class-list/class-list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TeacherListComponent {
+export class TeacherListComponent implements OnInit {
   icons: ISidebarIcons[] = [
     { name: "Início", image: 'assets/icons-sidebar/inicio.svg', route: 'main/teacher-screen' },
     { name: "Turmas", image: 'assets/icons-sidebar/turmas.svg', route: 'main/class-list' },

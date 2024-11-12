@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { ISidebarIcons } from 'src/app/interface';
 import { ClassService } from 'src/app/service/classes/classes.service';
 
@@ -34,7 +34,7 @@ interface EnsinoOption {
   styleUrls: ['./class-list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ClassListComponent {
+export class ClassListComponent implements OnInit {
   icons: ISidebarIcons[] = [
     { name: "Início", image: 'assets/icons-sidebar/inicio.svg', route: 'main/teacher-screen' },
     { name: "Turmas", image: 'assets/icons-sidebar/turmas.svg', route: 'main/class-list' },
