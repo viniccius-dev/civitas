@@ -8,6 +8,8 @@ import { TeacherRegistrationComponent } from "./components/teacher-registration/
 import { StudentRegistrationComponent } from "./components/student-registration/student-registration.component";
 import { TeacherScreenComponent } from "./components/teacher-screen/teacher-screen.component";
 import { StudentListComponent } from "./components/student-list/student-list.component";
+import { SearchClassComponent } from "./components/search-class/search-class.component";
+import { SearchStudentComponent } from "./components/search-student/search-student.component";
 
 const routes: Routes = [
   { path: 'class-list', component: ClassListComponent },
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'teacher-registration', component: TeacherRegistrationComponent },
   { path: 'student-registration', component: StudentRegistrationComponent },
   { path: 'teacher-screen', component: TeacherScreenComponent },
-  { path: 'student-list', component: StudentListComponent }
+  { path: 'student-list', component: StudentListComponent }, 
+  { path: 'search-class', component: SearchClassComponent }, 
+  { path: 'search-student', component: SearchStudentComponent }
 ];
 
 @NgModule({
