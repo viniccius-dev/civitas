@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 import { StudentService, StudentRegistrationData } from '../../../../service/students/student.service';
 
 @Component({
-  selector: 'app-student-registration',
-  templateUrl: './student-registration.component.html',
-  styleUrls: ['./student-registration.component.scss']
+  selector: 'app-update-student',
+  templateUrl: './update-student.component.html',
+  styleUrls: ['./update-student.component.scss']
 })
-export class StudentRegistrationComponent implements OnInit {
+export class UpdateStudentComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
@@ -73,7 +73,7 @@ export class StudentRegistrationComponent implements OnInit {
   }
 
   showSuccessMessage(): void {
-    this.snackBar.open('Estudante cadastrado com sucesso!', '', {
+    this.snackBar.open('Dados do estudante atualizado!', '', {
       duration: 3000,
       panelClass: ['sucess-snackbar'],
       horizontalPosition: 'right',
@@ -90,4 +90,5 @@ export class StudentRegistrationComponent implements OnInit {
       'Verifique os dados e tente novamente.'
     );
   }
+
 }
