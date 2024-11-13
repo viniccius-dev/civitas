@@ -86,7 +86,7 @@ export class StudentRegistrationComponent implements OnInit {
 
   errorMessage(): void {
     this.snackbarErrorService.showErrorMessage(
-      'Erro ao cadastrar professor',
+      'Erro ao cadastrar estudante',
       'Verifique os dados e tente novamente.'
     );
   }
