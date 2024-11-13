@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { jwtDecode } from 'jwt-decode';
 import { environment } from 'src/environments/environment.development';
 
 export interface LoginAdminCredentials {
@@ -20,11 +21,19 @@ export interface LoginProfessorCredentials {
   registrationNumber: string;
 }
 
+interface DecodedToken {
+  id: 1,
+  email: string,
+  schoolId?: number,
+  iat: number,
+  exp: number
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private tokenKey = 'token';
+  private tokenKey = '@civitas:token';
   private userKey = '@civitas:user';
 
   constructor(private http: HttpClient, private router: Router) {
@@ -41,8 +50,8 @@ export class AuthService {
   loginAdmin(credentials: LoginAdminCredentials): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(environment.apiUrl+'admin/login', credentials).pipe(
       tap((response) => {
-        if(response.token && response.user) {
-          this.saveUserToStorage(response.token, response.user);
+        if(response.token) {
+          this.saveUserToStorage(response.token);
         }
       })
     );
@@ -53,7 +62,7 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${environment.apiUrl}teachers/login`, credentials).pipe(
       tap((response) => {
         if (response.token && response.user) {
-          this.saveUserToStorage(response.token, response.user);
+          this.saveUserToStorage(response.token);
         }
       })
     );
@@ -65,7 +74,26 @@ export class AuthService {
    * @returns `true` se o usuário está autenticado, caso contrário, `false`.
    */
   isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
+    const token = this.getToken();
+
+    if(!token) {
+      return false;
+    }
+
+    try {
+      const decodedToken = jwtDecode<DecodedToken>(token);
+      const currentTime: number = Math.floor(Date.now() / 1000);
+
+      if(decodedToken.exp < currentTime) {
+        this.logout();
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      this.logout();
+      return false;
+    }
   }
 
   /**
@@ -102,9 +130,11 @@ export class AuthService {
    * @param user - Dados do usuário autenticado.
    */
 
-  private saveUserToStorage(token: string, user: string): void {
+  private saveUserToStorage(token: string): void {
+    // Decodifica o token para obter informações do usuário
+    const decodedToken = jwtDecode(token);
     localStorage.setItem(this.tokenKey, token);
-    localStorage.setItem(this.userKey, JSON.stringify(user));
+    localStorage.setItem(this.userKey, JSON.stringify(decodedToken));
   }
 
   /**
