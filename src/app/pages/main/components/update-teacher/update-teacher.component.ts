@@ -14,7 +14,7 @@ import { TeacherService, TeacherRegistrationData } from 'src/app/service/teacher
 export class UpdateTeacherComponent implements OnInit {
   form!: FormGroup;
   turmaOptions: any[] = []; // Variável para armazenar as turmas
-  isLoading = true; // Variável para controlar o carregamento
+  // isLoading = true; // Variável para controlar o carregamento
 
   constructor(
     private fb: FormBuilder,
@@ -42,11 +42,11 @@ export class UpdateTeacherComponent implements OnInit {
       (data) => {
         // Armazena o array de turmas para uso no template
         this.turmaOptions = data;
-        this.isLoading = false; // Desativa o carregamento após receber os dados
+        // this.isLoading = false; // Desativa o carregamento após receber os dados
       },
       (error) => {
         console.error('Erro ao buscar as turmas:', error);
-        this.isLoading = false; // Desativa o carregamento após receber os dados
+        // this.isLoading = false; // Desativa o carregamento após receber os dados
       }
     );
   }
