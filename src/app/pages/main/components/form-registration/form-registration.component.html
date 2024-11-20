@@ -1,1 +1,23 @@
-<p>form-registration works!</p>
+<div class="form-container">
+    <form [formGroup]="form">
+      <div class="form-card" *ngFor="let question of questions">
+        <h3>{{ question.title }}</h3>
+        <p class="description">{{ question.description }}</p>
+        
+        <div class="options-wrapper">
+          <div class="option" *ngFor="let option of options">
+            <label [for]="question.id + option.value" class="option-label">
+              <input 
+                type="radio" 
+                [id]="question.id + option.value"
+                [formControlName]="question.id"
+                [value]="option.value"
+                class="option-input"
+              >
+              <span class="option-texto">{{ option.text }}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
