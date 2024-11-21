@@ -1,23 +1,24 @@
 <div class="form-container">
-    <form [formGroup]="form">
-      <div class="form-card" *ngFor="let question of questions">
-        <h3>{{ question.title }}</h3>
-        <p class="description">{{ question.description }}</p>
-        
-        <div class="options-wrapper">
-          <div class="option" *ngFor="let option of options">
-            <label [for]="question.id + option.value" class="option-label">
-              <input 
-                type="radio" 
-                [id]="question.id + option.value"
-                [formControlName]="question.id"
-                [value]="option.value"
-                class="option-input"
-              >
-              <span class="option-texto">{{ option.text }}</span>
-            </label>
-          </div>
+  <div class="form-header">
+    <div class="header-content">
+      <strong>Registre um novo PDI</strong>
+      <p class="form-subtitle">Preencha as informações da avaliação do estudante</p>
+    </div>
+  </div>
+  <form [formGroup]="form">
+    <div class="form-card" *ngFor="let question of questions">
+      <h3>{{ question.title }}</h3>
+      <p class="description">{{ question.description }}</p>
+
+      <div class="options-wrapper">
+        <div class="option" *ngFor="let option of options">
+          <label [for]="question.id + option.value" class="option-label">
+            <input type="radio" [id]="question.id + option.value" [formControlName]="question.id" [value]="option.value"
+              class="option-input">
+            <span class="option-texto">{{ option.text }}</span>
+          </label>
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
