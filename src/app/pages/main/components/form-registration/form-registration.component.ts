@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-registration',
@@ -7,8 +8,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./form-registration.component.scss']
 })
 
-export class FormRegistrationComponent implements OnInit {
+export class FormRegistrationComponent {
   form!: FormGroup;
+  textTeacher: string = '';
+  ngModelOptions = { standalone: true };
 
   questions = [
     {
@@ -46,20 +49,28 @@ export class FormRegistrationComponent implements OnInit {
     { value: 'concordoTotalmente', text: 'Concordo totalmente' }
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
-      autoconhecimento: [''],
-      empatia: [''],
-      comunicacao: [''],
-      trabalhoEquipe: [''],
-      autonomia: ['']
+      autoconhecimento: ['', Validators.required],
+      empatia: ['', Validators.required],
+      comunicacao: ['', Validators.required],
+      trabalhoEquipe: ['', Validators.required],
+      autonomia: ['', Validators.required],
+      textTeacher: ['', Validators.required]
     });
   }
 
-  ngOnInit():void {
-    // Observar mudanças no formulário se necessário
-    this.form.valueChanges.subscribe(values => {
-      console.log('Valores do formulário:', values);
-    });
+  onSubmit(): void {
+    if (this.form.valid && this.textTeacher.trim().length > 0) {
+      const formData = {
+        ...this.form.value,
+        textTeacher: this.textTeacher
+      };
+      console.log('Formulário enviado:', formData);
+    }
+  }
+
+  goBack():void {
+    this.router.navigate(['/'])
   }
 }
