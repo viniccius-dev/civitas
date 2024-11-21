@@ -4,7 +4,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarErrorService } from 'src/app/components/snackbar-error/snackbar-error.service';
 import { Router } from '@angular/router';
 import { ClassService } from 'src/app/service/classes/classes.service';
-import { TeacherService, TeacherRegistrationData } from 'src/app/service/teachers/teachers.service';
+import { TeacherService } from 'src/app/service/teachers/teachers.service';
+
+import { TeacherRegistrationData } from 'src/app/interface/register/TeacherRegistrationData.interface';
+import { ClassesResponse } from 'src/app/interface/response/ClassesResponse.interface';
+import { CreateResponse } from 'src/app/interface/response/CreateResponse.interface';
 
 @Component({
   selector: 'app-teacher-registration',
@@ -13,7 +17,7 @@ import { TeacherService, TeacherRegistrationData } from 'src/app/service/teacher
 })
 export class TeacherRegistrationComponent implements OnInit {
   form!: FormGroup;
-  turmaOptions: any[] = []; // Variável para armazenar as turmas
+  turmaOptions: ClassesResponse[] = []; // Variável para armazenar as turmas
   isLoading = true; // Variável para controlar o carregamento
 
   constructor(
@@ -39,7 +43,7 @@ export class TeacherRegistrationComponent implements OnInit {
 
     // Chama o serviço para buscar as turmas
     this.classService.getClasses().subscribe(
-      (data) => {
+      (data: ClassesResponse[]) => {
         // Armazena o array de turmas para uso no template
         this.turmaOptions = data;
         this.isLoading = false; // Desativa o carregamento após receber os dados
@@ -54,7 +58,7 @@ export class TeacherRegistrationComponent implements OnInit {
   //=================================
   //Botão voltar
   goBack(): void {
-    this.router.navigate(['/admin-screen'])
+    this.router.navigate(['/main/admin-screen'])
   }
 
   onSubmit(): void {
@@ -70,13 +74,13 @@ export class TeacherRegistrationComponent implements OnInit {
         () => {
           this.showSuccessMessage();
         },
-        (error) => {
-          console.error('Erro ao cadastrar professor:', error);
-          this.errorMessage();
+        (data) => {
+          console.error('Erro ao cadastrar professor:', data?.error);
+          this.handleError(data?.error);
         }
       );
     } else {
-      this.errorMessage();
+      this.handleError({ message: "Erro ao cadastrar professor. Tente novamente." });
     }
   }
 
@@ -88,14 +92,15 @@ export class TeacherRegistrationComponent implements OnInit {
     });
 
     setTimeout(() => {
-      this.router.navigate(['/admin-screen'])
+      this.router.navigate(['/main/admin-screen'])
     }, 3500);
   }
 
-  errorMessage(): void {
+  handleError(error: CreateResponse):void {
+    const errorMessage: string = error.message || "Erro ao cadastrar professor. Tente novamente."
     this.snackbarErrorService.showErrorMessage(
-      'Erro ao cadastrar professor',
-      'Verifique os dados e tente novamente.'
+      errorMessage,
+      'Verifique as informações digitadas ou cadastre novos dados'
     );
   }
 }
