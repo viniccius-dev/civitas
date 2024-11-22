@@ -15,6 +15,7 @@ import { UpdateTeacherComponent } from "./components/update-teacher/update-teach
 import { UpdateStudentComponent } from "./components/update-student/update-student.component";
 import { AuthGuard } from "../auth/auth.guard";
 import { FormRegistrationComponent } from "./components/form-registration/form-registration.component";
+import { HomeScreenComponent } from "./components/home-screen/home-screen.component";
 
 const routes: Routes = [
   {
@@ -98,6 +99,12 @@ const routes: Routes = [
     component: FormRegistrationComponent,
     canActivate: [AuthGuard],
     data: { allowedRoles: ['admin', 'teacher'] }
+  },
+  {
+    path: 'home-screen',
+    component: HomeScreenComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['admin'] },
   }
 ];
 
