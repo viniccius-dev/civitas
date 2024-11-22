@@ -16,6 +16,7 @@ import { UpdateStudentComponent } from "./components/update-student/update-stude
 import { AuthGuard } from "../auth/auth.guard";
 import { AdiComponent } from "./components/adi/adi.component";
 import { StudentClassListComponent } from "./components/student-class-list/student-class-list.component";
+import { FormRegistrationComponent } from "./components/form-registration/form-registration.component";
 
 const routes: Routes = [
   {
@@ -103,6 +104,12 @@ const routes: Routes = [
   {
     path: 'adi/:id',
     component: AdiComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['admin', 'teacher'] }
+  },
+  {
+    path: 'form-registration',
+    component: FormRegistrationComponent,
     canActivate: [AuthGuard],
     data: { allowedRoles: ['admin', 'teacher'] }
   }
