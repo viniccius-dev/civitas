@@ -14,6 +14,7 @@ import { UpdateClassComponent } from "./components/update-class/update-class.com
 import { UpdateTeacherComponent } from "./components/update-teacher/update-teacher.component";
 import { UpdateStudentComponent } from "./components/update-student/update-student.component";
 import { AuthGuard } from "../auth/auth.guard";
+import { FormRegistrationComponent } from "./components/form-registration/form-registration.component";
 
 const routes: Routes = [
   {
@@ -92,6 +93,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { allowedRoles: ['admin'] }
   },
+  {
+    path: 'form-registration',
+    component: FormRegistrationComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['admin', 'teacher'] }
+  }
 ];
 
 @NgModule({
