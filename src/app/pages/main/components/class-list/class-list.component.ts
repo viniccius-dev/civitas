@@ -6,7 +6,7 @@ import { ClassService } from 'src/app/service/classes/classes.service';
 import { Router } from '@angular/router';
 
 import { AuthService } from 'src/app/service/auth/auth.service';
-import { SharedDataService } from 'src/app/service/shared-data.service';
+import { SharedDataService } from 'src/app/service/utils/shared-data.service';
 
 @Component({
   selector: 'app-class-list',

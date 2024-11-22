@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StudentService } from '../../../../service/students/student.service';
 import { IStudentResponse } from 'src/app/interface/response/IStudentsResponse.interface';
-import { SharedDataService } from 'src/app/service/shared-data.service';
+import { SharedDataService } from 'src/app/service/utils/shared-data.service';
 
 @Component({
   selector: 'app-student-class-list',
