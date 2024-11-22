@@ -1,0 +1,11 @@
+
+<main>
+  <section class="sidebar-section">
+    <app-sidebar [homeLink]="{ route: 'main/teacher-screen' }" [menuIcons]="icons"></app-sidebar>
+  </section>
+
+  <div class="chart-container">
+    <app-breadcrumb [breadcrumbItems]="breadcrumbItems"></app-breadcrumb>
+    <echarts [options]="chartOptions" class="echart"></echarts>
+  </div>
+</main>
