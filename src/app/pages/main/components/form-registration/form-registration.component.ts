@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Question, QuestionOption } from 'src/app/interface/register/FormRegistration.interface';
 
 @Component({
   selector: 'app-form-registration',
@@ -8,12 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-registration.component.scss']
 })
 
-export class FormRegistrationComponent {
+export class FormRegistrationComponent implements OnInit {
   form!: FormGroup;
   textTeacher: string = '';
-  ngModelOptions = { standalone: true };
 
-  questions = [
+  questions: Question[] = [
     {
       id: 'autoconhecimento',
       title: 'Autoconhecimento',
@@ -41,7 +42,7 @@ export class FormRegistrationComponent {
     },
   ];
 
-  options = [
+  options: QuestionOption[] = [
     { value: 'discordoTotalmente', text: 'Discordo totalmente' },
     { value: 'discordo', text: 'Discordo' },
     { value: 'neutro', text: 'Neutro' },
@@ -49,25 +50,38 @@ export class FormRegistrationComponent {
     { value: 'concordoTotalmente', text: 'Concordo totalmente' }
   ];
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.form = this.fb.group({
-      autoconhecimento: ['', Validators.required],
-      empatia: ['', Validators.required],
-      comunicacao: ['', Validators.required],
-      trabalhoEquipe: ['', Validators.required],
-      autonomia: ['', Validators.required],
-      textTeacher: ['', Validators.required]
+  constructor(private fb: FormBuilder, private router: Router, private _snackBar: MatSnackBar) { }
+
+  ngOnInit(): void {
+    const formControls: { [key: string]: any } = {};
+    this.questions.forEach(question => {
+      formControls[question.id] = ['', Validators.required];
     });
+    formControls['textTeacher'] = ['', Validators.required];
+
+    this.form = this.fb.group(formControls);
   }
 
   onSubmit(): void {
-    if (this.form.valid && this.textTeacher.trim().length > 0) {
+    if (this.form.valid) {
       const formData = {
         ...this.form.value,
-        textTeacher: this.textTeacher
+        textTeacher: this.form.get('textTeacher')?.value
       };
-      console.log('Formulário enviado:', formData);
+      //lógica para enviar os dados para o back
     }
+  }
+
+  private handleSuccess(): void {
+    this._snackBar.open('PDI registrado com sucesso!', '', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      panelClass: 'snackbar-success'
+    });
+
+    setTimeout(() => {
+      this.router.navigate(['/'])
+    }, 3500);
   }
 
   goBack():void {
