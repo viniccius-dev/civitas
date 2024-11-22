@@ -14,6 +14,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ListTeacherComponent } from './list-teacher/list-teacher.component';
 import { AdminScreenComponent } from './admin-screen/admin-screen.component';
+import { TeacherScreenComponent } from './teacher-screen/teacher-screen.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminScreenComponent } from './admin-screen/admin-screen.component';
     ListComponent,
     ListTeacherComponent,
     SidebarComponent,
-    AdminScreenComponent
+    AdminScreenComponent,
+    TeacherScreenComponent
   ],
   imports: [
     CommonModule,
