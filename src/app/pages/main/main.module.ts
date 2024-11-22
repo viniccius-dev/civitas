@@ -26,7 +26,8 @@ import { SearchStudentComponent } from './components/search-student/search-stude
 import { UpdateStudentComponent } from './components/update-student/update-student.component';
 import { UpdateTeacherComponent } from './components/update-teacher/update-teacher.component';
 import { UpdateClassComponent } from './components/update-class/update-class.component';
-import { FormRegistrationComponent } from './components/form-registration/form-registration.component'
+import { FormRegistrationComponent } from './components/form-registration/form-registration.component';
+import { HomeScreenComponent } from './components/home-screen/home-screen.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { FormRegistrationComponent } from './components/form-registration/form-r
     UpdateStudentComponent,
     UpdateTeacherComponent,
     UpdateClassComponent,
-    FormRegistrationComponent
+    FormRegistrationComponent,
+    HomeScreenComponent
   ],
   imports: [
     MainRoutingModule,
