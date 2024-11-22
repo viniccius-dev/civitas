@@ -13,6 +13,7 @@ import { ListComponent } from './list/list.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ListTeacherComponent } from './list-teacher/list-teacher.component';
+import { AdminScreenComponent } from './admin-screen/admin-screen.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ListTeacherComponent } from './list-teacher/list-teacher.component';
     BackButtonComponent,
     ListComponent,
     ListTeacherComponent,
-    SidebarComponent
+    SidebarComponent,
+    AdminScreenComponent
   ],
   imports: [
     CommonModule,
