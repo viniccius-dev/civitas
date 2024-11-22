@@ -30,7 +30,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { AdiComponent } from './components/adi/adi.component';
 import { StudentClassListComponent } from './components/student-class-list/student-class-list.component';
 import { UpdateClassComponent } from './components/update-class/update-class.component';
-import { FormRegistrationComponent } from './components/form-registration/form-registration.component'
+import { FormRegistrationComponent } from './components/form-registration/form-registration.component';
+import { HomeScreenComponent } from './components/home-screen/home-screen.component'
 
 @NgModule({
   declarations: [
@@ -48,6 +49,8 @@ import { FormRegistrationComponent } from './components/form-registration/form-r
     UpdateStudentComponent,
     UpdateTeacherComponent,
     UpdateClassComponent,
+    FormRegistrationComponent,
+    HomeScreenComponent
     AdiComponent,
     StudentClassListComponent
     FormRegistrationComponent
