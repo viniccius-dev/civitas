@@ -26,7 +26,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     ListTeacherComponent,
     SidebarComponent,
     AdminScreenComponent,
-    TeacherScreenComponent
+    TeacherScreenComponent,
     BreadcrumbComponent
   ],
   imports: [

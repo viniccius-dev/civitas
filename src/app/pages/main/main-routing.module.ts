@@ -34,7 +34,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AdminScreenComponent
+    component: HomeScreenComponent
   },
   {
     path: 'class-registration',
